@@ -88,7 +88,7 @@ const PlacementMap = () => {
   }, []);
 
   return (
-    <div className="space-y-10 pt-10 sm:pt-20">
+    <div className="space-y-10 pt-10 ">
       <Section ref={sectionRef}>
         <div>
           <Paragraph

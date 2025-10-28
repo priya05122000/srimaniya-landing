@@ -43,7 +43,7 @@ const Partners = () => {
 
   return (
     <div className="partners-bg">
-      <Section ref={sectionRef} className="py-20">
+      <Section ref={sectionRef} className="py-10">
         <div>
           <Paragraph
             size="base"

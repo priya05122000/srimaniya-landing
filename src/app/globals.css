@@ -7,8 +7,10 @@
    Root Variables
 ----------------------------------- */
 :root {
-  --background: #0b2351; /* Primary blue */
-  --foreground: #eeecea; /* Light overlay text */
+  --background: #0b2351;
+  /* Primary blue */
+  --foreground: #eeecea;
+  /* Light overlay text */
   --text-white: #ffffff;
   --text-dark: #323131;
   --text-blue: #0b2351;
@@ -61,34 +63,87 @@ body {
 /* -----------------------------------
    Background Utility Classes
 ----------------------------------- */
-.bg-blue-custom { background-color: #0b2351; }
-.bg-white-custom { background-color: #fbfffa; }
-.bg-yellow-custom { background-color: #ffce54; }
+.bg-blue-custom {
+  background-color: #0b2351;
+}
 
-.bg-blue-overlay-strong { background-color: #0b23518a; }
-.bg-blue-overlay-medium { background-color: #0b235152; }
-.bg-blue-overlay-light { background-color: #0b2351b8; }
+.bg-white-custom {
+  background-color: #fbfffa;
+}
+
+.bg-yellow-custom {
+  background-color: #ffce54;
+}
+
+.bg-blue-overlay-strong {
+  background-color: #0b23518a;
+}
+
+.bg-blue-overlay-medium {
+  background-color: #0b235152;
+}
+
+.bg-blue-overlay-light {
+  background-color: #0b2351b8;
+}
 
 /* -----------------------------------
    Text Utility Classes
 ----------------------------------- */
-.text-white-custom { color: #fbfffa; }
-.text-dark-custom { color: #323131; }
-.text-grey-custom { color: #c8c8c880; }
-.text-grey-light-custom { color: #323131cc; }
-.text-blue-custom { color: #0b2351; }
-.text-yellow-custom { color: #ffce54; }
+.text-white-custom {
+  color: #fbfffa;
+}
+
+.text-dark-custom {
+  color: #323131;
+}
+
+.text-grey-custom {
+  color: #c8c8c880;
+}
+
+.text-grey-light-custom {
+  color: #323131cc;
+}
+
+.text-blue-custom {
+  color: #0b2351;
+}
+
+.text-yellow-custom {
+  color: #ffce54;
+}
 
 /* -----------------------------------
    Border Utility Classes
 ----------------------------------- */
-.border-custom { border-color: #fffdfd0f; }
-.border-dark-custom { border-color: #323131; }
-.border-yellow-custom { border-color: #ffce54; }
-.border-blue-custom { border-color: #0b2351; }
-.border-white-custom { border-color: #fbfffa; }
-.border-grey-custom { border-color: #c8c8c880; }
-.border-grey { border-color: #c8c8c8; }
+.border-custom {
+  border-color: #fffdfd0f;
+}
+
+.border-dark-custom {
+  border-color: #323131;
+}
+
+.border-yellow-custom {
+  border-color: #ffce54;
+}
+
+.border-blue-custom {
+  border-color: #0b2351;
+}
+
+.border-white-custom {
+  border-color: #fbfffa;
+}
+
+.border-grey-custom {
+  border-color: #c8c8c880;
+}
+
+.border-grey {
+  border-color: #c8c8c8;
+}
 
 /* -----------------------------------
    Font Faces
@@ -152,15 +207,31 @@ body {
 /* -----------------------------------
    Typography
 ----------------------------------- */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-p, span, ul, li, a, button, input, textarea {
+p,
+span,
+ul,
+li,
+a,
+button,
+input,
+textarea {
   font-family: "Sf Pro Display", sans-serif;
 }
 
-label, input, textarea, select, option {
+label,
+input,
+textarea,
+select,
+option {
   font-family: "Sf Pro Display", sans-serif;
 }
 
@@ -208,4 +279,34 @@ label, input, textarea, select, option {
 }
 
 
+.navbar--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
 
+.navbar--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.reveal-section,
+.reveal-section iframe,
+.reveal-section svg {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+.reveal-section {
+  position: relative;
+  z-index: 2;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  isolation: isolate;
+  /* 👈 ensures it has its own layer */
+}

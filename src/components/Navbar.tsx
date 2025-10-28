@@ -68,9 +68,8 @@ const Hamburger: React.FC<{ open: boolean }> = React.memo(({ open }) => (
     aria-hidden="true"
   >
     <span
-      className={`absolute transition-opacity duration-300 ${
-        open ? "opacity-0" : "opacity-100"
-      }`}
+      className={`absolute transition-opacity duration-300 ${open ? "opacity-0" : "opacity-100"
+        }`}
     >
       <Image
         src="/logos/sort.svg"
@@ -82,9 +81,8 @@ const Hamburger: React.FC<{ open: boolean }> = React.memo(({ open }) => (
       />
     </span>
     <span
-      className={`absolute transition-opacity duration-300 ${
-        open ? "opacity-100" : "opacity-0"
-      }`}
+      className={`absolute transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"
+        }`}
     >
       <Image
         src="/logos/close.png"
@@ -240,11 +238,10 @@ const Navbar = ({ sticky = true }: NavbarProps) => {
           fixed top-20 right-0
           h-[calc(100vh-80px)] w-[280px]
           bg-blue-custom transition-transform duration-300 z-40
-          ${
-            menuOpen
-              ? "translate-x-0 px-6 py-8 shadow-lg"
-              : "translate-x-full px-6 py-8"
-          }
+          ${menuOpen
+                ? "translate-x-0 px-6 py-8 shadow-lg"
+                : "translate-x-full px-6 py-8"
+              }
           sm:static sm:h-auto sm:w-auto sm:bg-transparent sm:translate-x-0 sm:px-0 sm:py-0 sm:shadow-none
           sm:flex sm:items-center`}
           >
@@ -252,14 +249,14 @@ const Navbar = ({ sticky = true }: NavbarProps) => {
             <div className="mt-6 sm:mt-0 sm:ml-4 flex flex-col sm:flex-row gap-6">
               {[
                 { label: "Brochure", icon: <GoDownload /> },
-                { label: "Enquire", icon: <MdArrowForward /> },
+                // { label: "Enquire", icon: <MdArrowForward /> },
               ].map(({ label, icon }) => (
                 <button
                   key={label}
                   className="relative flex justify-center items-center gap-1 rounded-full bg-blue-custom overflow-hidden cursor-pointer border border-yellow-custom group transition-all duration-300 px-3 py-1"
                   onClick={() => setShowBrochureModal(true)}
                 >
-                  <span className="relative gap-x-1 z-20 flex items-center text-center no-underline w-full text-[#FFCE54] text-base transition-all duration-300 group-hover:text-[#0B2351]">
+                  <span className="relative gap-x-1 z-20 flex items-center text-center justify-center no-underline w-full text-[#FFCE54] text-base transition-all duration-300 group-hover:text-[#0B2351]">
                     {label} {icon}
                   </span>
                   <span className="absolute left-0 top-0 w-full h-0 bg-yellow-custom transition-all duration-300 ease-in-out group-hover:h-full group-hover:top-auto group-hover:bottom-0 z-10" />
