@@ -1,8 +1,17 @@
+/* -----------------------------------
+   Tailwind Import
+----------------------------------- */
 @import "tailwindcss";
 
+/* -----------------------------------
+   Root Variables
+----------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0b2351; /* Primary blue */
+  --foreground: #eeecea; /* Light overlay text */
+  --text-white: #ffffff;
+  --text-dark: #323131;
+  --text-blue: #0b2351;
 }
 
 @theme inline {
@@ -19,8 +28,184 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* -----------------------------------
+   Scrollbar Styles
+----------------------------------- */
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* -----------------------------------
+   Body & Background
+----------------------------------- */
+body {
+  color: var(--foreground);
+  position: relative;
+  min-height: 100vh;
+  z-index: 0;
+}
+
+
+
+
+/* -----------------------------------
+   Background Utility Classes
+----------------------------------- */
+.bg-blue-custom { background-color: #0b2351; }
+.bg-white-custom { background-color: #fbfffa; }
+.bg-yellow-custom { background-color: #ffce54; }
+
+.bg-blue-overlay-strong { background-color: #0b23518a; }
+.bg-blue-overlay-medium { background-color: #0b235152; }
+.bg-blue-overlay-light { background-color: #0b2351b8; }
+
+/* -----------------------------------
+   Text Utility Classes
+----------------------------------- */
+.text-white-custom { color: #fbfffa; }
+.text-dark-custom { color: #323131; }
+.text-grey-custom { color: #c8c8c880; }
+.text-grey-light-custom { color: #323131cc; }
+.text-blue-custom { color: #0b2351; }
+.text-yellow-custom { color: #ffce54; }
+
+/* -----------------------------------
+   Border Utility Classes
+----------------------------------- */
+.border-custom { border-color: #fffdfd0f; }
+.border-dark-custom { border-color: #323131; }
+.border-yellow-custom { border-color: #ffce54; }
+.border-blue-custom { border-color: #0b2351; }
+.border-white-custom { border-color: #fbfffa; }
+.border-grey-custom { border-color: #c8c8c880; }
+.border-grey { border-color: #c8c8c8; }
+
+/* -----------------------------------
+   Font Faces
+----------------------------------- */
+@font-face {
+  font-family: "Sf Pro Display";
+  src: url("/fonts/SF_PRO_Display_Regular.woff") format("woff");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sf Pro Display";
+  src: url("/fonts/SF_PRO_Display_Semibold.woff") format("woff");
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sf Pro Display";
+  src: url("/fonts/SF_PRO_Display_Bold.woff") format("woff");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/fonts/PlusJakartaSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/fonts/PlusJakartaSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FuturaCyrillic";
+  src: url("/fonts/FuturaCyrillicBook.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FuturaCyrillic";
+  src: url("/fonts/FuturaCyrillicBold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "FuturaCyrillic";
+  src: url("/fonts/FuturaCyrillicHeavy.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+}
+
+/* -----------------------------------
+   Typography
+----------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+p, span, ul, li, a, button, input, textarea {
+  font-family: "Sf Pro Display", sans-serif;
+}
+
+label, input, textarea, select, option {
+  font-family: "Sf Pro Display", sans-serif;
+}
+
+
+.partners-bg {
+  /* background-image: linear-gradient(rgba(200, 200, 200, 0.2) 0.1em,
+      transparent 0.1em),
+    linear-gradient(90deg, rgba(200, 200, 200, 0.2) 0.1em, transparent 0.1em); */
+  /* background-size: 10em 5em; */
+}
+
+.marquee-fade {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  /* background: linear-gradient(to right,
+      #eeecea 0%,
+      rgba(255, 255, 255, 0.1) 10%,
+      rgba(255, 255, 255, 0.1) 80%,
+      #eeecea 100%); */
+}
+
+.animate-marquee {
+  display: flex;
+  flex-wrap: nowrap;
+  min-width: max-content;
+  /* ensures container doesn’t shrink */
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+
+  /* only half of total content */
+}
+
+
+
