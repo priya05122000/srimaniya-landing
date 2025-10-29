@@ -256,6 +256,7 @@ const Navbar = ({ sticky = true }: NavbarProps) => {
                   className="relative flex justify-center items-center gap-1 rounded-full bg-blue-custom overflow-hidden cursor-pointer border border-yellow-custom group transition-all duration-300 px-3 py-1"
                   onClick={() => setShowBrochureModal(true)}
                 >
+                  
                   <span className="relative gap-x-1 z-20 flex items-center text-center justify-center no-underline w-full text-[#FFCE54] text-base transition-all duration-300 group-hover:text-[#0B2351]">
                     {label} {icon}
                   </span>
