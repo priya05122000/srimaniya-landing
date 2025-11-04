@@ -70,8 +70,10 @@ const Banner: React.FC = () => {
       toast.error("You must agree to the terms and conditions.");
       return;
     }
+
+    const landingName = `(From LandingPage) ${formData.name}`;
     const payload = {
-      name: formData.name,
+      name: landingName,
       email: formData.email || null,
       phone_number: formData.mobile,
       message: formData.message || null,
@@ -103,12 +105,13 @@ const Banner: React.FC = () => {
     <div data-section>
       <div className="bg-blue-custom grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-[1.5fr_1fr] sm:h-[calc(100vh-80px)]">
         <div className="border-b sm:border-b-0 sm:border-r border-grey-custom h-full min-h-[300px] relative">
-          <Image
-            src="/images/banner.jpg"
-            alt="Banner Image"
-            fill
-            style={{ objectFit: "cover" }}
-            className="absolute inset-0 w-full h-full"
+          <video
+            src="/videos/reelvideo.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover rounded-none"
           />
         </div>
         <div className="hero-content flex flex-col justify-center sm:justify-center text-end px-6 sm:px-8 py-6 sm:py-8 text-white-custom min-h-[380px]">

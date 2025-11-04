@@ -16,6 +16,7 @@ import { InputField } from "@/components/FormFields";
 import { IoClose } from "react-icons/io5";
 import { GoDownload } from "react-icons/go";
 import { MdArrowForward } from "react-icons/md";
+import { createAppoinmentRequest } from "@/services/appoinmentRequestService";
 
 // -------------------- Types --------------------
 
@@ -68,8 +69,9 @@ const Hamburger: React.FC<{ open: boolean }> = React.memo(({ open }) => (
     aria-hidden="true"
   >
     <span
-      className={`absolute transition-opacity duration-300 ${open ? "opacity-0" : "opacity-100"
-        }`}
+      className={`absolute transition-opacity duration-300 ${
+        open ? "opacity-0" : "opacity-100"
+      }`}
     >
       <Image
         src="/logos/sort.svg"
@@ -81,8 +83,9 @@ const Hamburger: React.FC<{ open: boolean }> = React.memo(({ open }) => (
       />
     </span>
     <span
-      className={`absolute transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"
-        }`}
+      className={`absolute transition-opacity duration-300 ${
+        open ? "opacity-100" : "opacity-0"
+      }`}
     >
       <Image
         src="/logos/close.png"
@@ -158,7 +161,7 @@ const Navbar = ({ sticky = true }: NavbarProps) => {
     setSubmitting(true);
     const { StudentName, StudentPhone, StudentEmail, City, State, District } =
       form;
-    const brochureName = `(brochure) ${StudentName}`;
+    const brochureName = `(From Landing Page Brochure) ${StudentName}`;
     try {
       await fetch(
         "https://script.google.com/macros/s/AKfycbxQ0OGd2A5Tvs0_MQxcUWtWfwEmyAyHpdY6mcUXZKj87QXG0JP2ilZ9CTQxmhfkP6_r/exec",
@@ -180,6 +183,12 @@ const Navbar = ({ sticky = true }: NavbarProps) => {
           }),
         }
       );
+
+      const payload = {
+        name: brochureName,
+        phone_number: StudentPhone,
+      };
+      await createAppoinmentRequest(payload);
       toast.success("Form submitted successfully!");
       setForm(initialForm);
       // Trigger brochure download
@@ -238,10 +247,11 @@ const Navbar = ({ sticky = true }: NavbarProps) => {
           fixed top-20 right-0
           h-[calc(100vh-80px)] w-[280px]
           bg-blue-custom transition-transform duration-300 z-40
-          ${menuOpen
-                ? "translate-x-0 px-6 py-8 shadow-lg"
-                : "translate-x-full px-6 py-8"
-              }
+          ${
+            menuOpen
+              ? "translate-x-0 px-6 py-8 shadow-lg"
+              : "translate-x-full px-6 py-8"
+          }
           sm:static sm:h-auto sm:w-auto sm:bg-transparent sm:translate-x-0 sm:px-0 sm:py-0 sm:shadow-none
           sm:flex sm:items-center`}
           >
@@ -256,7 +266,6 @@ const Navbar = ({ sticky = true }: NavbarProps) => {
                   className="relative flex justify-center items-center gap-1 rounded-full bg-blue-custom overflow-hidden cursor-pointer border border-yellow-custom group transition-all duration-300 px-3 py-1"
                   onClick={() => setShowBrochureModal(true)}
                 >
-                  
                   <span className="relative gap-x-1 z-20 flex items-center text-center justify-center no-underline w-full text-[#FFCE54] text-base transition-all duration-300 group-hover:text-[#0B2351]">
                     {label} {icon}
                   </span>

@@ -104,8 +104,8 @@ const PlacementMap = () => {
             Connecting Talent to <br /> Global Brands
           </Heading>
         </div>
-        <div className=" grid grid-cols-1 sm:grid-cols-2 my-10 ">
-          <div className="h-full  flex items-center min-h-[300px] relative">
+        <div className=" grid grid-cols-1  my-10 ">
+          {/* <div className="h-full  flex items-center min-h-[300px] relative">
             <Paragraph
               size="lg"
               className="mb-2 text-dark-custom w-[90%] xl:w-[85%]"
@@ -115,8 +115,8 @@ const PlacementMap = () => {
               represents a renowned global partner where our graduates launch
               distinguished careers.
             </Paragraph>
-          </div>
-          <div className="hero-content grid grid-cols-2 flex-col justify-center sm:justify-center py-6 sm:py-8 text-white-custom min-h-[380px]">
+          </div> */}
+          <div className="hero-content grid grid-cols-4 flex-col justify-center sm:justify-center py-6 sm:py-8 text-white-custom min-h-[380px]">
             {placements.map((placement, idx) => (
               <PlacementCard key={idx} {...placement} />
             ))}

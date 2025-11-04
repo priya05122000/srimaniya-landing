@@ -12,7 +12,7 @@ const HomePage = () => {
       <PlacementStats />
       <Partners />
       <PlacementMap />
-      <AlumniStories />
+      {/* <AlumniStories /> */}
       <ShowReel />
     </div>
   );
