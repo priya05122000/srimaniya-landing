@@ -184,7 +184,7 @@ export default function PartBanner() {
   };
 
   return (
-    <div className="relative  lg:h-[calc(100vh-80px)] grid grid-cols-1 sm:grid-cols-[1.5fr_1fr] overflow-hidden">
+    <div className="relative  lg:h-[calc(100vh-80px)] grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-[1.5fr_1fr] overflow-hidden">
       <Swiper
         key={banners.length}
         spaceBetween={0}

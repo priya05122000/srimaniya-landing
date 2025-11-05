@@ -219,14 +219,9 @@ const Navbar: FC<NavbarProps> = ({ sticky = true }) => {
             <Hamburger open={menuOpen} />
           </div>
           {/* Nav Links */}
-          <div
-            className={`nav-elements fixed top-20 right-0 h-[calc(100vh-80px)] w-[280px] bg-blue-custom transition-transform duration-300 z-40 ${
-              menuOpen
-                ? "translate-x-0 px-6 py-8 shadow-lg"
-                : "translate-x-full px-6 py-8"
-            } lg:static lg:h-auto lg:w-auto lg:bg-transparent lg:translate-x-0 lg:px-0 lg:py-0 lg:shadow-none lg:flex lg:items-center`}
-          >
-            <ul className="flex flex-col lg:flex-row lg:space-x-6 space-y-6 lg:space-y-0 mt-8 lg:mt-0">
+          {/* Desktop Nav */}
+          <div className="nav-elements hidden lg:flex lg:items-center lg:static lg:h-auto lg:w-auto lg:bg-transparent lg:px-0 lg:py-0 lg:shadow-none">
+            <ul className="flex flex-row lg:space-x-6 space-y-0 mt-0">
               {NAV_LINKS.map((link) => (
                 <li key={link.name} className="relative group">
                   <Link
@@ -244,7 +239,45 @@ const Navbar: FC<NavbarProps> = ({ sticky = true }) => {
               ))}
             </ul>
             {/* Brochure Button */}
-            <div className="mt-6 xl:mt-0 xl:ml-4">
+            <div className="lg:ml-4">
+              <button
+                className="relative flex justify-center items-center gap-1 rounded-full bg-blue-custom overflow-hidden cursor-pointer border border-yellow-custom group transition-all duration-300 px-3 py-1"
+                onClick={() => setShowBrochureModal(true)}
+              >
+                <span className="relative gap-x-1 z-20 flex items-center text-center no-underline w-full text-[#FFCE54] text-base transition-all duration-300 group-hover:text-[#0B2351]">
+                  Brochure <GoDownload />
+                </span>
+                <span className="absolute left-0 top-0 w-full h-0 bg-yellow-custom transition-all duration-300 ease-in-out group-hover:h-full group-hover:top-auto group-hover:bottom-0 z-10" />
+              </button>
+            </div>
+          </div>
+          {/* Mobile Nav */}
+          <div
+            className={`nav-elements fixed top-20 right-0 h-[calc(100vh-80px)] w-[280px] bg-blue-custom transition-transform duration-300 z-40 ${
+              menuOpen
+                ? "translate-x-0 px-6 py-8 shadow-lg"
+                : "translate-x-full px-6 py-8"
+            } lg:hidden`}
+          >
+            <ul className="flex flex-col space-y-6 mt-8">
+              {NAV_LINKS.map((link) => (
+                <li key={link.name} className="relative group">
+                  <Link
+                    href={link.href ?? "#"}
+                    className={`text-base font-normal text-white-custom transition-colors duration-200 relative py-2 ${
+                      isActive(link.href ?? "#")
+                        ? "border-b border-white-custom"
+                        : "hover:border-b hover:border-white-custom"
+                    }`}
+                    onClick={handleLinkClick}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            {/* Brochure Button */}
+            <div className="mt-6">
               <button
                 className="relative flex justify-center items-center gap-1 rounded-full bg-blue-custom overflow-hidden cursor-pointer border border-yellow-custom group transition-all duration-300 px-3 py-1"
                 onClick={() => setShowBrochureModal(true)}

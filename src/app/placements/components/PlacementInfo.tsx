@@ -10,12 +10,12 @@ const PlacementInfo: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <Section ref={sectionRef} className="placement-info space-y-6 py-10 sm:py-16">
+    <Section ref={sectionRef} className="placement-info space-y-6 py-10 lg:py-16">
       <section>
         <Heading level={4} className="mb-6 text-blue-custom text-center hotel-management-title uppercase" {...ANIMATIONS.zoomIn}>
           Placements at srimaniya institute
         </Heading>
-       
+
         <Paragraph size="lg" className="text-dark-custom">
           At Sri Maniya Institute, we believe that education should open doors to real-world success. Our dedicated Placement Cell ensures that every student gains valuable industry exposure and career opportunities both in India and abroad.
         </Paragraph>

@@ -62,7 +62,7 @@ const Partners = () => {
   }, [partners]);
 
   return (
-    <div className="partners-bg py-10 sm:py-16">
+    <div className="partners-bg py-10 lg:py-16">
       <Section ref={sectionRef} className="">
         <div>
           <Paragraph

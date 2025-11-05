@@ -118,7 +118,7 @@ const StudentCard: React.FC<{ placement: Placement }> = ({ placement }) => {
           </div>
         )}
 
-       
+
       </div>
     </div>
   );
@@ -152,7 +152,7 @@ const PlacedStudentsInfo: React.FC = () => {
 
   return (
     <div ref={fullSectionRef}>
-      <Section className="py-10 sm:py-16">
+      <Section className="py-10 lg:py-16">
         <Heading
           level={4}
           className="text-blue-custom text-center uppercase mt-2 block placed-students-info" {...ANIMATIONS.zoomIn}

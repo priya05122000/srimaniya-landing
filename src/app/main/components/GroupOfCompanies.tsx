@@ -39,15 +39,15 @@ const CompanyInfo: FC<CompanyInfoProps> = memo(
     logoSrc,
     title,
     address,
-    className = "grid grid-cols-[1fr_1.5fr]  px-6 lg:px-8",
-    logoClassName = " flex items-center justify-center ",
+    className = "grid sm:grid-cols-[auto_2fr] gap-10 ",
+    logoClassName = "w-72  h-32 flex items-start justify-center ",
   }) => (
     <div className={className}>
       <div className={logoClassName}>
         <Image
           src={logoSrc}
           alt="Partner Logo"
-          className="object-contain w-auto h-32 max-h-full  mr-auto"
+          className="object-contain w-auto  h-full max-h-full  mr-auto"
           loading="lazy"
           width={1000}
           height={1000}
@@ -93,7 +93,7 @@ const GroupOfCompanies: FC = () => {
         <section className="section flex flex-col items-center w-full ">
           <Heading
             level={4}
-            className="group-title text-blue-custom  uppercase text-dark-custom px-6  lg:px-8 pb-10 sm:pb-16 "
+            className="group-title text-center text-blue-custom  uppercase text-dark-custom px-6  lg:px-8 pb-10"
             {...ANIMATIONS.zoomIn}
           >
             Our Group of Companies

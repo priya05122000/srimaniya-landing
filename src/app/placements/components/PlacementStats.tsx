@@ -87,7 +87,7 @@ const PlacementStats: React.FC = () => {
   ];
 
   return (
-    <div className="py-10 sm:py-16 bg-blue-custom" data-section>
+    <div className="py-10 lg:py-16 bg-blue-custom" data-section>
       <Section>
         <div className="grid grid-cols-1 lg:gap-8 message-content">
           <div className="flex flex-col sm:flex-row justify-evenly text-white-custom gap-6 sm:gap-2 py-4 sm:py-8">

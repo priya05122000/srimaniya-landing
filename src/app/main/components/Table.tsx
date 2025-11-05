@@ -53,7 +53,7 @@ const Table = () => {
   return (
     <Section className="my-10 sm:my-16 py-8 bg-blue-custom">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-        <div className="md:border-r border-b lg:border-b-0 border-grey-custom px-0 md:px-6 py-4 md:py-2 lg:py-0">
+        <div className="md:border-r border-b lg:border-b-0 border-grey-custom px-0 md:px-6 py-4 md:py-4 lg:py-0">
           <Heading level={6} className="text-white py-4">
             Diploma Courses
           </Heading>

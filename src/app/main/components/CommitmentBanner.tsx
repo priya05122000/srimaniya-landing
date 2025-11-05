@@ -68,7 +68,7 @@ const CommitmentBanner: React.FC = () => {
   return (
     <div
       ref={sectionRef}
-      className="w-full   relative mb-15 sm:mb-10 mt-10 sm:mt-16 lg:mb-30 flex flex-col"
+      className="w-full   relative mb-15  mt-10 sm:mt-16 sm:mb-30 flex flex-col"
       id="section3"
     >
       <div
@@ -78,7 +78,7 @@ const CommitmentBanner: React.FC = () => {
         <Heading
           level={4}
           className="text-white-custom text-right leading-tight commitment-title uppercase"
-          {...ANIMATIONS.zoomInLeft}
+          {...ANIMATIONS.zoomIn}
         >
           Our commitment to build your trust
         </Heading>
@@ -95,7 +95,18 @@ const CommitmentBanner: React.FC = () => {
               backgroundImage: `url('/images/commitment-bg-${idx + 1}.webp')`,
             }}
           >
-            <div className="absolute inset-0 z-0 transition-all duration-300 group-hover:opacity-0 lg:backdrop-blur-xs" />
+            {/* <div className="absolute inset-0 z-0 transition-all duration-300 group-hover:opacity-0 lg:backdrop-blur-xs" /> */}
+            <div
+              className="absolute inset-0 z-0 transition-all duration-300 group-hover:opacity-0"
+              style={{
+                backgroundImage: `url('/images/commitment-bg-${idx + 1}.webp')`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                filter: "blur(10px) brightness(0.8)",
+                transform: "scale(1.05)", // avoids visible edge blur cut
+              }}
+            />
+
             <div className="absolute inset-0 z-20 pointer-events-none transition-all duration-300 group-hover:opacity-0 bg-no-repeat bg-[url('/designs/noise.svg')] bg-cover" />
             <div className="relative z-30 flex flex-col items-end justify-start h-full p-6 sm:p-8 gap-4 text-[#FBFFFA] w-10/12 lg:w-2/3 group">
               <div className="transition-all duration-300 ease-in-out  rounded-lg ">

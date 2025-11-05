@@ -103,8 +103,8 @@ const Banner: React.FC = () => {
 
   return (
     <div data-section>
-      <div className="bg-blue-custom grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-[1.5fr_1fr] sm:h-[calc(100vh-80px)]">
-        <div className="border-b sm:border-b-0 sm:border-r border-grey-custom h-full min-h-[300px] relative">
+      <div className="bg-blue-custom grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] xl:grid-cols-[2fr_1fr] lg:h-[calc(100vh-80px)]">
+        <div className="border-b sm:border-b-0 sm:border-r border-grey-custom h-full min-h-[400px] relative">
           <video
             src="/videos/reelvideo.mp4"
             autoPlay

@@ -145,7 +145,7 @@ const PartTimePlacement: React.FC = () => {
           breakpoints={{
             0: { slidesPerView: 1 },
             640: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
+            1024: { slidesPerView: 2 }, // desktop
           }}
           className="py-10"
         >

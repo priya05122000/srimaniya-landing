@@ -30,7 +30,7 @@ const ScholarBanner: React.FC = () => {
                 />
 
                 <div
-                    className="absolute inset-0" 
+                    className="absolute inset-0"
                     style={{
                         background: "linear-gradient(to bottom, rgba(0,0,0,0) 30%, #0b2351 100%)",
                         opacity: 0.8,
@@ -38,7 +38,7 @@ const ScholarBanner: React.FC = () => {
                 ></div>
 
                 <div className="absolute left-0 sm:left-8 bottom-8 sm:bottom-16 px-6 sm:px-0 w-full sm:w-2/3 xl:w-1/2">
-                    <Heading level={4} className="leading-tight scholarship" {...ANIMATIONS.zoomInLeft}>₹51 Lakh Worth of Scholarships Awarded to Deserving Students</Heading>
+                    <Heading level={4} className="leading-tight scholarship" {...ANIMATIONS.zoomIn}>₹51 Lakh Worth of Scholarships Awarded to Deserving Students</Heading>
                 </div>
             </div>
         </div>

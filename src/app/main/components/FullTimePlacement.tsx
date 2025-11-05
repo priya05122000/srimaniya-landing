@@ -147,7 +147,7 @@ const FullTimePlacement: React.FC = () => {
           breakpoints={{
             0: { slidesPerView: 1 }, // mobile
             640: { slidesPerView: 2 }, // tablet
-            1024: { slidesPerView: 3 }, // desktop
+            1024: { slidesPerView: 2 }, // desktop
           }}
         >
           {paginatedData.map((placement) => (

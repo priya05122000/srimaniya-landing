@@ -29,7 +29,7 @@ const PlacementCard: React.FC<Placement> = ({
   name,
   placement_count,
 }) => (
-  <div className="flex items-center space-x-4 px-4 py-8 hover:shadow-sm transition-shadow ">
+  <div className="flex items-center space-x-4 px-4 py-4 sm:py-8 hover:shadow-sm transition-shadow ">
     <div className="w-32 h-14 relative shrink-0">
       <Image
         src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/files/${flag_img}`}
@@ -82,7 +82,7 @@ const PlacementMap = () => {
   }, []);
 
   return (
-    <div className=" py-10 sm:py-16">
+    <div className=" py-10 lg:py-16">
       <Section ref={sectionRef}>
         <div>
           <Paragraph
@@ -101,7 +101,7 @@ const PlacementMap = () => {
           </Heading>
         </div>
         <div className=" grid grid-cols-1">
-          <div className="hero-content grid grid-cols-3 gap-6 flex-col justify-center sm:justify-center pt-10 sm:pt-16  text-white-custom ">
+          <div className="hero-content grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 flex-col justify-center sm:justify-center pt-10 sm:pt-16  text-white-custom ">
             {placements.map((placement, idx) => (
               <PlacementCard key={idx} {...placement} />
             ))}

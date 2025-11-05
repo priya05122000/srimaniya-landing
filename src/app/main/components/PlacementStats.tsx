@@ -90,8 +90,8 @@ const PlacementStats: React.FC = () => {
   return (
     <Section>
       <div className=" my-10 sm:my-16 py-2 bg-blue-custom" data-section>
-        <div className="grid grid-cols-1 lg:gap-8 message-content">
-          <div className="flex flex-col sm:flex-row justify-evenly text-white-custom gap-6 sm:gap-2 py-4 sm:py-8">
+        <div className="grid  grid-cols-1 lg:gap-8 message-content">
+            <div className="grid grid-cols-2 lg:grid-cols-4 text-white-custom gap-6 sm:gap-8 px-4 py-4 sm:py-8">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center lg:py-6">
                 <Heading level={3} className="hidden sm:flex justify-center">

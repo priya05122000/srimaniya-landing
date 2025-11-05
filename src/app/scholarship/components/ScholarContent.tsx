@@ -11,7 +11,7 @@ const ScholarContent = () => {
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <div className="py-10 sm:py-16" ref={sectionRef}>
+    <div className="py-10 lg:py-16" ref={sectionRef}>
       <Section>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
           <div>
