@@ -198,7 +198,7 @@ const Navbar: FC<NavbarProps> = ({ sticky = true }) => {
         sticky ? "fixed top-0" : ""
       }`}
     >
-      <div className="grid grid-cols-[1.2fr_2fr] h-full">
+      <div className="grid grid-cols-[1.2fr_1fr] sm:grid-cols-[1.2fr_2fr] h-full">
         {/* Logo Left */}
         <Link
           href="/"
