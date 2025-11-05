@@ -148,6 +148,7 @@ const FullTimePlacement: React.FC = () => {
             0: { slidesPerView: 1 }, // mobile
             640: { slidesPerView: 2 }, // tablet
             1024: { slidesPerView: 2 }, // desktop
+            1280: { slidesPerView: 3 }, // large desktop
           }}
         >
           {paginatedData.map((placement) => (

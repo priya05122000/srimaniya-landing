@@ -146,6 +146,7 @@ const PartTimePlacement: React.FC = () => {
             0: { slidesPerView: 1 },
             640: { slidesPerView: 2 },
             1024: { slidesPerView: 2 }, // desktop
+            1280: { slidesPerView: 3 }, // large desktop
           }}
           className="py-10"
         >
