@@ -84,6 +84,7 @@ const PlacementStats: React.FC = () => {
     { value: "750", label: "Placements" },
     { value: "250", label: "Placement Partners" },
     { value: "400", label: "Part Time Placements" },
+    { value: "2000", label: "Alumni" },
   ];
 
   return (

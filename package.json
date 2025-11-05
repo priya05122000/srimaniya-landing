@@ -9,7 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@heroui/react": "^2.8.5",
+    "@splidejs/splide": "^4.1.4",
+    "@splidejs/splide-extension-auto-scroll": "^0.5.3",
     "aos": "^2.3.4",
     "axios": "^1.13.0",
     "gsap": "^3.13.0",

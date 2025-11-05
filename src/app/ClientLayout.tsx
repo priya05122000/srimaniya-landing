@@ -6,6 +6,7 @@ import React, {
   useRef,
   ReactNode,
   Suspense,
+  useContext,
 } from "react";
 import { usePathname } from "next/navigation";
 import gsap from "gsap";
@@ -15,6 +16,7 @@ import { ToastContainer } from "react-toastify";
 import Navbar from "@/components/Navbar";
 import AOSInit from "@/components/AOSInit";
 import Footer from "@/components/Footer";
+import { LoadingContext } from "@/components/LoadingContext";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -37,6 +39,7 @@ const ClientLayout: React.FC<ClientLayoutProps> = ({
   const [showOnlyFooter, setShowOnlyFooter] = useState<boolean>(true);
   const [footerVisible, setFooterVisible] = useState<boolean>(false);
   const [navbarVisible, setNavbarVisible] = useState<boolean>(true);
+  const { loading } = useContext(LoadingContext);
 
   // Initialize ScrollSmoother for desktop
   useEffect(() => {
@@ -116,7 +119,7 @@ const ClientLayout: React.FC<ClientLayoutProps> = ({
       const smoother = ScrollSmoother.get();
       if (footer && smoother) {
         smoother.scrollTo(footer, false);
-      } else if (footer) {
+      } else if (footer) {  
         footer.scrollIntoView({ behavior: "auto" });
       }
 
@@ -137,29 +140,29 @@ const ClientLayout: React.FC<ClientLayoutProps> = ({
     return () => {
       if (t1) clearTimeout(t1);
     };
-  }, [pathname]);
+  }, [loading, pathname]);
 
   // Navbar visibility based on footer intersection
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const footer = document.getElementById("footer");
-    if (!footer) return;
-    let observer: IntersectionObserver | null = null;
-    observer = new window.IntersectionObserver(
-      ([entry]) => {
-        if (pathname === "/") {
-          setNavbarVisible(true);
-        } else {
-          setNavbarVisible(entry.intersectionRatio < 0.5);
-        }
-      },
-      { root: null, threshold: 0.5 }
-    );
-    observer.observe(footer);
-    return () => {
-      if (observer && footer) observer.unobserve(footer);
-    };
-  }, [footerVisible, pathname]);
+  // useEffect(() => {
+  //   if (typeof window === "undefined") return;
+  //   const footer = document.getElementById("footer");
+  //   if (!footer) return;
+  //   let observer: IntersectionObserver | null = null;
+  //   observer = new window.IntersectionObserver(
+  //     ([entry]) => {
+  //       if (pathname === "/") {
+  //         setNavbarVisible(true);
+  //       } else {
+  //         setNavbarVisible(entry.intersectionRatio < 0.5);
+  //       }
+  //     },
+  //     { root: null, threshold: 0.5 }
+  //   );
+  //   observer.observe(footer);
+  //   return () => {
+  //     if (observer && footer) observer.unobserve(footer);
+  //   };
+  // }, [footerVisible, pathname]);
 
   // Render
   return (

@@ -2,10 +2,11 @@
 import React, {
   useState,
   useEffect,
+  FC,
   MouseEvent,
   KeyboardEvent,
-  ChangeEvent,
   FormEvent,
+  ChangeEvent,
 } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
@@ -13,44 +14,61 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "react-toastify";
 import { InputField } from "@/components/FormFields";
+import districts from "../lib/districts.json";
 import { IoClose } from "react-icons/io5";
 import { GoDownload } from "react-icons/go";
-import { MdArrowForward } from "react-icons/md";
+
 import { createAppoinmentRequest } from "@/services/appoinmentRequestService";
 
 // -------------------- Types --------------------
+interface NavLink {
+  name: string;
+  href?: string;
+  sublinks?: { name: string; href: string }[];
+}
 
 interface NavbarProps {
   sticky?: boolean;
   className?: string;
 }
 
-interface FormData {
+type FormData = {
   StudentName: string;
-  ParentName?: string;
+  ParentName: string;
   StudentPhone: string;
-  ParentPhone?: string;
+  ParentPhone: string;
   StudentEmail: string;
-  Address?: string;
+  Address: string;
   City: string;
   State: string;
   District: string;
-  PinCode?: string;
-}
+  PinCode: string;
+};
 
 const initialForm: FormData = {
   StudentName: "",
+  ParentName: "",
   StudentPhone: "",
+  ParentPhone: "",
   StudentEmail: "",
+  Address: "",
   City: "",
   State: "",
   District: "",
+  PinCode: "",
 };
+
+// -------------------- Data --------------------
+const NAV_LINKS: NavLink[] = [
+  { name: "Courses", href: "/courses" },
+  { name: "Placements", href: "/placements" },
+  { name: "Scholarship", href: "/scholarship" },
+];
 
 // -------------------- Components --------------------
 
 // Logo
-const Logo: React.FC<{ id?: string }> = React.memo(({ id }) => (
+const Logo: FC<{ id?: string }> = ({ id }) => (
   <Image
     id={id}
     src="/logos/navbarlogo.png"
@@ -60,10 +78,10 @@ const Logo: React.FC<{ id?: string }> = React.memo(({ id }) => (
     className="h-16 sm:h-12 w-auto object-contain"
     priority
   />
-));
+);
 
 // Hamburger Menu
-const Hamburger: React.FC<{ open: boolean }> = React.memo(({ open }) => (
+const Hamburger: FC<{ open: boolean }> = ({ open }) => (
   <span
     className="relative flex items-center justify-center w-8 h-8 transition-all duration-300"
     aria-hidden="true"
@@ -97,66 +115,30 @@ const Hamburger: React.FC<{ open: boolean }> = React.memo(({ open }) => (
       />
     </span>
   </span>
-));
+);
 
 // -------------------- Main Navbar --------------------
-const Navbar = ({ sticky = true }: NavbarProps) => {
+const Navbar: FC<NavbarProps> = ({ sticky = true }) => {
   const router = useRouter();
   const pathname = usePathname();
-
-  const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [hideNavbar, setHideNavbar] = useState<boolean>(false);
-  const [showBrochureModal, setShowBrochureModal] = useState<boolean>(false); // NEW
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [showBrochureModal, setShowBrochureModal] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState<FormData>(initialForm);
 
-  // -------------------- Helpers --------------------
-  // Helper: Toggle menu
-  const handleMenuToggle = (
-    e: MouseEvent<HTMLDivElement> | KeyboardEvent<HTMLDivElement>
-  ) => {
-    e.stopPropagation();
-    setMenuOpen((prev) => !prev);
-  };
-
-  // Helper: Close menu
+  const isActive = (href: string) => pathname === href;
+  const handleMenuToggle = () => setMenuOpen((prev) => !prev);
   const handleLinkClick = () => setMenuOpen(false);
-
-  // -------------------- Effects --------------------
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const handleHomeScroll = () => {
-      const revealSection = document.querySelector(".reveal-section");
-      if (!revealSection) return;
-      const rect = revealSection.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-      const ratio = Math.min(
-        1,
-        Math.max(0, (viewportHeight - rect.top) / rect.height)
-      );
-      let threshold =
-        window.innerWidth >= 1024 && window.innerWidth < 1280 ? 0.6 : 0.9;
-      setHideNavbar(ratio >= threshold);
-    };
-    if (pathname === "/") {
-      window.addEventListener("scroll", handleHomeScroll);
-      handleHomeScroll();
-    }
-    return () => {
-      window.removeEventListener("scroll", handleHomeScroll);
-    };
-  }, [pathname]);
-
-  // Form change handler
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
+    if (name === "State") {
+      setForm((prev) => ({ ...prev, District: "" }));
+    }
   };
-
-  // Form submit handler
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
     const { StudentName, StudentPhone, StudentEmail, City, State, District } =
@@ -188,11 +170,13 @@ const Navbar = ({ sticky = true }: NavbarProps) => {
         name: brochureName,
         phone_number: StudentPhone,
       };
+
       await createAppoinmentRequest(payload);
+
       toast.success("Form submitted successfully!");
       setForm(initialForm);
       // Trigger brochure download
-      const brochureUrl = "/pdf/brochure.pdf";
+      const brochureUrl = "/pdf/brochure.pdf"; // Update path if needed
       const link = document.createElement("a");
       link.href = brochureUrl;
       link.download = "brochure.pdf";
@@ -207,76 +191,73 @@ const Navbar = ({ sticky = true }: NavbarProps) => {
     }
   };
 
-  // -------------------- Render --------------------
   return (
     <nav
       id="section1"
-      className={`navbar h-20 z-50 bg-blue-custom w-full shadow-sm border-b border-grey-custom
-        ${sticky ? "fixed top-0 " : ""}
-        transition-opacity duration-500
-        ${hideNavbar ? "navbar--hidden" : "navbar--visible"}
-      `}
+      className={`navbar h-20 z-50 bg-blue-custom w-full shadow-sm border-b border-grey-custom ${
+        sticky ? "fixed top-0" : ""
+      }`}
     >
-      <div className="grid grid-cols-2 sm:grid-cols-[1fr_1.5fr] lg:grid-cols-[1fr_2fr] xl:grid-cols-[1fr_3fr] h-full">
-        {/* Logo */}
+      <div className="grid grid-cols-[1.2fr_2fr] h-full">
+        {/* Logo Left */}
         <Link
           href="/"
-          className="logo flex items-center justify-start order-1 pl-6 sm:pl-8"
+          className="logo flex items-center justify-start pl-6 order-1"
         >
           <Logo id="navbar-logo" />
         </Link>
-        {/* Navigation Menu */}
-        <div className="flex items-center justify-end order-2 pr-6 sm:pr-8 ">
+        {/* Navigation Menu Right */}
+        <div className="flex items-center justify-end order-2 pr-6">
           {/* Hamburger */}
           <div
-            className="sm:hidden ml-2"
+            className="lg:hidden mr-2"
             onClick={handleMenuToggle}
             role="button"
             tabIndex={0}
             aria-label="Open menu"
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") handleMenuToggle(e);
-            }}
           >
             <Hamburger open={menuOpen} />
           </div>
-
           {/* Nav Links */}
           <div
-            className={`nav-elements
-          fixed top-20 right-0
-          h-[calc(100vh-80px)] w-[280px]
-          bg-blue-custom transition-transform duration-300 z-40
-          ${
-            menuOpen
-              ? "translate-x-0 px-6 py-8 shadow-lg"
-              : "translate-x-full px-6 py-8"
-          }
-          sm:static sm:h-auto sm:w-auto sm:bg-transparent sm:translate-x-0 sm:px-0 sm:py-0 sm:shadow-none
-          sm:flex sm:items-center`}
+            className={`nav-elements fixed top-20 right-0 h-[calc(100vh-80px)] w-[280px] bg-blue-custom transition-transform duration-300 z-40 ${
+              menuOpen
+                ? "translate-x-0 px-6 py-8 shadow-lg"
+                : "translate-x-full px-6 py-8"
+            } lg:static lg:h-auto lg:w-auto lg:bg-transparent lg:translate-x-0 lg:px-0 lg:py-0 lg:shadow-none lg:flex lg:items-center`}
           >
-            {/* Brochure & Enquire Buttons (reused) */}
-            <div className="mt-6 sm:mt-0 sm:ml-4 flex flex-col sm:flex-row gap-6">
-              {[
-                { label: "Brochure", icon: <GoDownload /> },
-                // { label: "Enquire", icon: <MdArrowForward /> },
-              ].map(({ label, icon }) => (
-                <button
-                  key={label}
-                  className="relative flex justify-center items-center gap-1 rounded-full bg-blue-custom overflow-hidden cursor-pointer border border-yellow-custom group transition-all duration-300 px-3 py-1"
-                  onClick={() => setShowBrochureModal(true)}
-                >
-                  <span className="relative gap-x-1 z-20 flex items-center text-center justify-center no-underline w-full text-[#FFCE54] text-base transition-all duration-300 group-hover:text-[#0B2351]">
-                    {label} {icon}
-                  </span>
-                  <span className="absolute left-0 top-0 w-full h-0 bg-yellow-custom transition-all duration-300 ease-in-out group-hover:h-full group-hover:top-auto group-hover:bottom-0 z-10" />
-                </button>
+            <ul className="flex flex-col lg:flex-row lg:space-x-6 space-y-6 lg:space-y-0 mt-8 lg:mt-0">
+              {NAV_LINKS.map((link) => (
+                <li key={link.name} className="relative group">
+                  <Link
+                    href={link.href ?? "#"}
+                    className={`text-base font-normal text-white-custom transition-colors duration-200 relative py-2 ${
+                      isActive(link.href ?? "#")
+                        ? "border-b border-white-custom"
+                        : "hover:border-b hover:border-white-custom"
+                    }`}
+                    onClick={handleLinkClick}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
               ))}
+            </ul>
+            {/* Brochure Button */}
+            <div className="mt-6 xl:mt-0 xl:ml-4">
+              <button
+                className="relative flex justify-center items-center gap-1 rounded-full bg-blue-custom overflow-hidden cursor-pointer border border-yellow-custom group transition-all duration-300 px-3 py-1"
+                onClick={() => setShowBrochureModal(true)}
+              >
+                <span className="relative gap-x-1 z-20 flex items-center text-center no-underline w-full text-[#FFCE54] text-base transition-all duration-300 group-hover:text-[#0B2351]">
+                  Brochure <GoDownload />
+                </span>
+                <span className="absolute left-0 top-0 w-full h-0 bg-yellow-custom transition-all duration-300 ease-in-out group-hover:h-full group-hover:top-auto group-hover:bottom-0 z-10" />
+              </button>
             </div>
           </div>
         </div>
       </div>
-
       {/* Overlay for mobile menu */}
       {menuOpen && (
         <div
@@ -284,7 +265,6 @@ const Navbar = ({ sticky = true }: NavbarProps) => {
           onClick={handleLinkClick}
         ></div>
       )}
-
       {/* Brochure Modal */}
       <AnimatePresence>
         {showBrochureModal && (
@@ -303,7 +283,7 @@ const Navbar = ({ sticky = true }: NavbarProps) => {
               transition={{ duration: 0.3 }}
             >
               <button
-                className="absolute top-2 right-2 cursor-pointer text-2sm"
+                className="absolute top-2 right-2 cursor-pointer text-2xl"
                 onClick={() => setShowBrochureModal(false)}
                 aria-label="Close"
               >
@@ -347,7 +327,7 @@ const Navbar = ({ sticky = true }: NavbarProps) => {
                     disabled={submitting}
                   >
                     <span className="relative z-20 gap-x-1 flex items-center text-center no-underline w-full text-[#0B2351] text-base transition-all duration-300 group-hover:text-[#FFCE54]">
-                      Download Brochure <GoDownload />
+                      {submitting ? "Downloading..." : "Download Brochure"} <GoDownload />
                     </span>
                     <span className="absolute left-0 top-0 w-full h-0 bg-blue-custom transition-all duration-300 ease-in-out group-hover:h-full group-hover:top-auto group-hover:bottom-0 z-10" />
                   </button>

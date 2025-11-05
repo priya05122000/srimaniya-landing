@@ -3,13 +3,14 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "standalone",
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'api.srimaniyainstitute.in',
-        port: '',
-        pathname: '/files/**',
-      },
+    qualities: [100],
+    domains: [
+      "cdn.prod.website-files.com",
+      "p645224.mittwaldserver.info",
+      "images.unsplash.com",
+      "api.srimaniyainstitute.in",
+      "localhost",
+      "127.0.0.1",
     ],
   },
 };

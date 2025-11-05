@@ -1,9 +1,12 @@
-import AlumniStories from "./components/AlumniStories";
 import Banner from "./components/Banner";
+import CommitmentBanner from "./components/CommitmentBanner";
+import FullTimePlacement from "./components/FullTimePlacement";
+import GroupOfCompanies from "./components/GroupOfCompanies";
 import Partners from "./components/Partners";
+import PartTimePlacement from "./components/PartTimePlacement";
 import PlacementMap from "./components/PlacementMap";
 import PlacementStats from "./components/PlacementStats";
-import ShowReel from "./components/ShowReel";
+import Table from "./components/Table";
 
 const HomePage = () => {
   return (
@@ -11,9 +14,12 @@ const HomePage = () => {
       <Banner />
       <PlacementStats />
       <Partners />
+      <Table />
       <PlacementMap />
-      {/* <AlumniStories /> */}
-      <ShowReel />
+      <CommitmentBanner />
+      <FullTimePlacement />
+      <PartTimePlacement />
+      <GroupOfCompanies />
     </div>
   );
 };
