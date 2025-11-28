@@ -87,9 +87,8 @@ const Hamburger: FC<{ open: boolean }> = ({ open }) => (
     aria-hidden="true"
   >
     <span
-      className={`absolute transition-opacity duration-300 ${
-        open ? "opacity-0" : "opacity-100"
-      }`}
+      className={`absolute transition-opacity duration-300 ${open ? "opacity-0" : "opacity-100"
+        }`}
     >
       <Image
         src="/logos/sort.svg"
@@ -101,9 +100,8 @@ const Hamburger: FC<{ open: boolean }> = ({ open }) => (
       />
     </span>
     <span
-      className={`absolute transition-opacity duration-300 ${
-        open ? "opacity-100" : "opacity-0"
-      }`}
+      className={`absolute transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0"
+        }`}
     >
       <Image
         src="/logos/close.png"
@@ -194,9 +192,8 @@ const Navbar: FC<NavbarProps> = ({ sticky = true }) => {
   return (
     <nav
       id="section1"
-      className={`navbar h-20 z-50 bg-blue-custom w-full shadow-sm border-b border-grey-custom ${
-        sticky ? "fixed top-0" : ""
-      }`}
+      className={`navbar h-20 z-50 bg-blue-custom w-full shadow-sm border-b border-grey-custom ${sticky ? "fixed top-0" : ""
+        }`}
     >
       <div className="grid grid-cols-[1.2fr_1fr] sm:grid-cols-[1.2fr_2fr] h-full">
         {/* Logo Left */}
@@ -226,11 +223,10 @@ const Navbar: FC<NavbarProps> = ({ sticky = true }) => {
                 <li key={link.name} className="relative group">
                   <Link
                     href={link.href ?? "#"}
-                    className={`text-base font-normal text-white-custom transition-colors duration-200 relative py-2 ${
-                      isActive(link.href ?? "#")
+                    className={`text-base font-normal text-white-custom transition-colors duration-200 relative py-2 ${isActive(link.href ?? "#")
                         ? "border-b border-white-custom"
                         : "hover:border-b hover:border-white-custom"
-                    }`}
+                      }`}
                     onClick={handleLinkClick}
                   >
                     {link.name}
@@ -253,22 +249,20 @@ const Navbar: FC<NavbarProps> = ({ sticky = true }) => {
           </div>
           {/* Mobile Nav */}
           <div
-            className={`nav-elements fixed top-20 right-0 h-[calc(100vh-80px)] w-[280px] bg-blue-custom transition-transform duration-300 z-40 ${
-              menuOpen
+            className={`nav-elements fixed top-20 right-0 h-[calc(100vh-80px)] w-[280px] bg-blue-custom transition-transform duration-300 z-40 ${menuOpen
                 ? "translate-x-0 px-6 py-8 shadow-lg"
                 : "translate-x-full px-6 py-8"
-            } lg:hidden`}
+              } lg:hidden`}
           >
             <ul className="flex flex-col space-y-6 mt-8">
               {NAV_LINKS.map((link) => (
                 <li key={link.name} className="relative group">
                   <Link
                     href={link.href ?? "#"}
-                    className={`text-base font-normal text-white-custom transition-colors duration-200 relative py-2 ${
-                      isActive(link.href ?? "#")
+                    className={`text-base font-normal text-white-custom transition-colors duration-200 relative py-2 ${isActive(link.href ?? "#")
                         ? "border-b border-white-custom"
                         : "hover:border-b hover:border-white-custom"
-                    }`}
+                      }`}
                     onClick={handleLinkClick}
                   >
                     {link.name}
