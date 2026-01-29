@@ -45,7 +45,7 @@ const PlacementCard: React.FC<{ placement: Placement }> = ({ placement }) => (
       <Image
         src={
           placement.profile_photo
-            ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/files/${placement.profile_photo}`
+            ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/${placement.profile_photo}`
             : "/images/profile.webp"
         }
         className="absolute top-0 left-0 w-full h-full object-cover object-top"

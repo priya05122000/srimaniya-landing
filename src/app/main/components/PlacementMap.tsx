@@ -32,7 +32,7 @@ const PlacementCard: React.FC<Placement> = ({
   <div className="flex items-center space-x-4 px-4 py-4 sm:py-8 hover:shadow-sm transition-shadow ">
     <div className="w-32 h-14 relative shrink-0">
       <Image
-        src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/files/${flag_img}`}
+        src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/${flag_img}`}
         alt={name}
         fill
         className=" object-contain"

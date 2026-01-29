@@ -84,7 +84,7 @@ const MobileCourseRow: FC<CourseRowProps> = ({
   duration,
 }) => (
   <div className="flex items-start gap-4 py-4">
-    <div className="min-w-[110px] flex-shrink-0 flex flex-col items-start">
+    <div className="min-w-[110px] shrink-0 flex flex-col items-start">
       {highlight && id !== undefined ? (
         <div className="flex items-center gap-2">
           <Heading level={5} className="text-dark-custom">
@@ -200,7 +200,7 @@ const CourseList: FC = () => {
                 {course.syllabus && (
                   <CourseRow label="Syllabus">
                     <Link
-                      href={`${process.env.NEXT_PUBLIC_API_BASE_URL}/uploads/syllabus/${course.syllabus}`}
+                      href={`${process.env.NEXT_PUBLIC_API_BASE_URL}/${course.syllabus}`}
                       target="_blank"
                       download
                     >
@@ -237,7 +237,7 @@ const CourseList: FC = () => {
               {course.syllabus && (
                 <MobileCourseRow label="Syllabus">
                   <Link
-                    href={`${process.env.NEXT_PUBLIC_API_BASE_URL}/uploads/syllabus/${course.syllabus}`}
+                    href={`${process.env.NEXT_PUBLIC_API_BASE_URL}/${course.syllabus}`}
                     target="_blank"
                     download
                   >

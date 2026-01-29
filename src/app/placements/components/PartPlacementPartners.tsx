@@ -55,7 +55,7 @@ const PartPlacementPartners = () => {
                 key={i}
               >
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/files/${partner.logo_url}`}
+                  src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/${partner.logo_url}`}
                   alt={partner.name}
                   className="object-contain h-32 w-32 cursor-pointer"
                   loading="lazy"

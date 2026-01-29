@@ -83,7 +83,7 @@ const PartTimeStudentsInfo = () => {
               <div className=" relative w-[250px] h-full">
                 {placement.profile_photo ? (
                   <Image
-                    src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/files/${placement.profile_photo}`}
+                    src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/${placement.profile_photo}`}
                     className="absolute top-0 left-0 w-full h-full object-cover object-top"
                     alt={placement.name}
                     width={300}

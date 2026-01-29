@@ -49,7 +49,7 @@ const StudentCard: React.FC<{ placement: Placement }> = ({ placement }) => {
     <div className="placement relative h-[220px] sm:h-[200px] flex flex-row bg-blue-custom shadow-[15px_15px_60px_rgba(0,0,0,0.01)] p-4 overflow-hidden">
       <div className="relative w-[250px] h-full">
         {/* <Image
-          src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/files/${placement.photo_url}`}
+          src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/${placement.photo_url}`}
           className="absolute top-0 left-0 w-full h-full object-cover object-top"
           alt={placement.name}
           width={300}
@@ -60,7 +60,7 @@ const StudentCard: React.FC<{ placement: Placement }> = ({ placement }) => {
 
         {placement.photo_url ? (
           <Image
-            src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/files/${placement.photo_url}`}
+            src={`${process.env.NEXT_PUBLIC_API_BASE_URL}/${placement.photo_url}`}
             className="absolute top-0 left-0 w-full h-full object-cover object-top"
             alt={placement.name}
             width={300}
