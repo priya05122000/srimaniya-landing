@@ -119,7 +119,7 @@ const ClientLayout: React.FC<ClientLayoutProps> = ({
       const smoother = ScrollSmoother.get();
       if (footer && smoother) {
         smoother.scrollTo(footer, false);
-      } else if (footer) {  
+      } else if (footer) {
         footer.scrollIntoView({ behavior: "auto" });
       }
 

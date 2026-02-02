@@ -14,6 +14,7 @@ import Paragraph from "@/components/Paragraph";
 import Link from "next/link";
 import ParagraphList from "@/components/ParagraphList";
 
+
 const Table = () => {
   const [courses, setCourses] = useState<Course[]>([]);
   useEffect(() => {
@@ -64,15 +65,12 @@ const Table = () => {
             <ParagraphList size="base" className="list-square">
               {diplomaCourses.map((course) => (
                 <li key={course.id}>
-                  {/*
                   <Link
                     href={`/courses?course=${course.id}`}
                     className="cursor-pointer"
                   >
                     {course.title}
                   </Link>
-                  */}
-                  <span>{course.title}</span>
                   {course.duration && (
                     <span className="text-xs text-gray-400">
                       {" "}
@@ -96,15 +94,12 @@ const Table = () => {
             <ParagraphList size="base" className="list-square">
               {pathwayCourses.map((course) => (
                 <li key={course.id}>
-                  {/*
                   <Link
                     href={`/courses?course=${course.id}`}
                     className="cursor-pointer"
                   >
                     {course.title}
                   </Link>
-                  */}
-                  <span>{course.title}</span>
                   {course.duration && (
                     <span className="text-xs text-gray-400">
                       {" "}
@@ -128,15 +123,12 @@ const Table = () => {
             <ParagraphList size="base" className="list-square">
               {degreeCourses.map((course) => (
                 <li key={course.id}>
-                  {/*
                   <Link
                     href={`/courses?course=${course.id}`}
                     className="cursor-pointer"
                   >
                     {course.title}
                   </Link>
-                  */}
-                  <span>{course.title}</span>
                   {course.duration && (
                     <span className="text-xs text-gray-400">
                       {" "}
@@ -160,15 +152,12 @@ const Table = () => {
             <ParagraphList size="base" className="list-square">
               {postGraduateCourses.map((course) => (
                 <li key={course.id}>
-                  {/*
                   <Link
                     href={`/courses?course=${course.id}`}
                     className="cursor-pointer"
                   >
                     {course.title}
                   </Link>
-                  */}
-                  <span>{course.title}</span>
                   {course.duration && (
                     <span className="text-xs text-gray-400">
                       {" "}

@@ -1,3 +1,4 @@
+import CaptchaWrapper from "@/components/CaptchaWrapper";
 import Banner from "./components/Banner";
 import CommitmentBanner from "./components/CommitmentBanner";
 import FullTimePlacement from "./components/FullTimePlacement";
@@ -11,7 +12,9 @@ import Table from "./components/Table";
 const HomePage = () => {
   return (
     <div>
-      <Banner />
+      <CaptchaWrapper>
+        <Banner />
+      </CaptchaWrapper>
       <PlacementStats />
       <Partners />
       <Table />

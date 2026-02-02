@@ -134,7 +134,7 @@ const Footer = () => {
   return (
     <footer
       id="footer"
-      className="bg-blue-custom text-white-custom h-screen[calc(100vh-80px)] relative"
+      className="bg-blue-custom text-white-custom h-screen relative"
       data-section
     >
       {/* Decorative image behind */}
@@ -158,11 +158,10 @@ const Footer = () => {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className={`flex items-center  gap-6 py-6 text-white-custom transition  group sm:border-r last:border-0 border-custom ${
-                      item.label === "Instagram"
-                        ? "justify-center sm:justify-start"
-                        : "justify-center"
-                    }`}
+                    className={`flex items-center  gap-6 py-6 text-white-custom transition  group sm:border-r last:border-0 border-custom ${item.label === "Instagram"
+                      ? "justify-center sm:justify-start"
+                      : "justify-center"
+                      }`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -187,9 +186,10 @@ const Footer = () => {
           {/* Main Content */}
           <Section>
             <div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 lg:gap-10 xl:gap-0 pb-8 w-full">
-                {/* Explore */}
-                <div className=" xl:border-r xl:last:border-0 border-custom flex flex-col  justify-between  pt-6 lg:pt-10 xl:pt-16 pb-4 ">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 sm:gap-4 lg:gap-10 xl:gap-0 pb-8 w-full">
+
+                {/* Contact */}
+                <div className=" xl:border-r xl:last:border-0 border-custom flex flex-col  justify-between  pt-6 lg:pt-10  pb-4 ">
                   <div>
                     <Span className=" font-bold text-white/34">Contact</Span>
                     <ul>
@@ -201,8 +201,9 @@ const Footer = () => {
                     </ul>
                   </div>
                 </div>
-                {/* Course */}
-                <div className="xl:border-r xl:last:border-0 border-custom flex   justify-start lg:justify-center  pt-6 lg:pt-10 xl:pt-16 pb-4 ">
+
+                {/* Address */}
+                <div className="xl:border-r xl:last:border-0 border-custom flex   justify-start lg:justify-center  pt-6 lg:pt-10  pb-4 ">
                   <div>
                     <Span className="font-bold text-white/34">Address</Span>
                     <ul>
@@ -217,26 +218,28 @@ const Footer = () => {
                     </ul>
                   </div>
                 </div>
-                {/* Contact 1 */}
-                <div className="xl:border-r xl:last:border-0 border-custom flex justify-start lg:justify-center pt-6 lg:pt-10 xl:pt-16 pb-4 xl:px-6">
+
+                {/* Course */}
+                <div className="xl:border-r xl:last:border-0 border-custom flex justify-start lg:justify-center pt-6 lg:pt-10  pb-4 xl:px-6">
                   <div>
                     <Span className="font-bold text-white/34">Course</Span>
                     <ul>
                       {courses.map((item) => (
                         <li key={item.id} className="my-3 text-white-custom">
-                          <Link href={`/courses?course=${item.id}`}>
+                          {/* <Link href={`/courses?course=${item.id}`}>
                             <Span>{item.title}</Span>
-                          </Link>
+                          </Link> */}
+                          <Span>{item.title}</Span>
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
 
-                {/* Contact 2 + Enquire Now */}
-                <div className="xl:border-r xl:last:border-0 border-custom flex justify-start lg:justify-center pt-6 lg:pt-10 xl:pt-16 pb-4">
+                {/* Explore */}
+                <div className="xl:border-r xl:last:border-0 border-custom  justify-start lg:justify-center pt-6 lg:pt-10  pb-4 xl:pl-6 hidden sm:flex">
                   <div>
-                    <Span className="font-bold text-white/34">Explore</Span>
+                    {/* <Span className="font-bold text-white/34">Explore</Span>
                     <ul>
                       {NAV_EXPLORE.map((item) => (
                         <li key={item.label} className="my-3 text-white-custom">
@@ -260,7 +263,12 @@ const Footer = () => {
                           </Span>
                         </li>
                       ))}
-                    </ul>
+                    </ul> */}
+                    <Span className="text-white-custom">
+                      Sri Maniya Institutions provides a focused learning
+                      environment and strong legacy in hospitality. Its success is
+                      built on dedicated faculty and motivated students.
+                    </Span>
                   </div>
                 </div>
               </div>
@@ -273,7 +281,7 @@ const Footer = () => {
             <div className="flex flex-col sm:flex-row justify-between">
               {/* Logo and Description */}
               <div className="w-full sm:w-sm">
-                <div className="mb-6">
+                <div className="mb-6 sm:mb-0">
                   <Image
                     src={COMPANY.logo}
                     alt={`${COMPANY.name} Logo`}
@@ -283,18 +291,16 @@ const Footer = () => {
                     priority
                   />
                 </div>
-                <Span className="text-white-custom">
+                <Span className="text-white-custom block sm:hidden">
                   Sri Maniya Institutions provides a focused learning
                   environment and strong legacy in hospitality. Its success is
                   built on dedicated faculty and motivated students.
                 </Span>
               </div>
-
-            
             </div>
 
             {/* Bottom Bar */}
-            <div className="flex flex-col md:flex-row items-start justify-between  my-12 xl:my-16 pb-10 border-b border-custom  gap-2 w-full">
+            <div className="flex flex-col md:flex-row items-start justify-between  my-8 pb-10 border-b border-custom  gap-2 w-full">
               <Span className="text-start  ">
                 Copyright ©2025 srimaniya institute, All Rights Reserved.
                 <br />
@@ -319,8 +325,8 @@ const Footer = () => {
             </div>
           </div>
         </Section>
-      </div>
-    </footer>
+      </div >
+    </footer >
   );
 };
 

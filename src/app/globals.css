@@ -14,6 +14,21 @@
   --text-white: #ffffff;
   --text-dark: #323131;
   --text-blue: #0b2351;
+
+  --white: #ffffff;
+  --dark: #323131;
+  --blue: #0b2351;
+  --yellow: #ffce54;
+  --black: #000000;
+  --grey: #c8c8c8;
+  --white-custom: #fbfffa;
+  --blue-overlay-custom: #0b235166;
+  --blue-overlay-strong: #0b23518a;
+  --blue-overlay-medium: #0b235152;
+  --blue-overlay-light: #0b2351b8;
+  --grey-custom: #c8c8c880;
+  --grey-light-custom: #323131cc;
+  --black-custom: #fffdfd0f;
 }
 
 @theme inline {
@@ -354,15 +369,21 @@ option {
   align-items: center;
 }
 
-
 .splide__slide {
-  width: auto !important; /* Prevent Splide from applying inline calc width */
-  flex: 0 0 auto !important; /* Prevent shrinking/stretching */
+  width: auto !important;
+  /* Prevent Splide from applying inline calc width */
+  flex: 0 0 auto !important;
+  /* Prevent shrinking/stretching */
 }
 
 .splide__slide img {
-  width: 160px; /* or whatever width you want */
+  width: 160px;
+  /* or whatever width you want */
   height: auto;
   object-fit: contain;
   padding: 0 8px;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
 }

@@ -60,9 +60,9 @@ const initialForm: FormData = {
 
 // -------------------- Data --------------------
 const NAV_LINKS: NavLink[] = [
-  { name: "Courses", href: "/courses" },
-  { name: "Placements", href: "/placements" },
-  { name: "Scholarship", href: "/scholarship" },
+  // { name: "Courses", href: "/courses" },
+  // { name: "Placements", href: "/placements" },
+  // { name: "Scholarship", href: "/scholarship" },
 ];
 
 // -------------------- Components --------------------
