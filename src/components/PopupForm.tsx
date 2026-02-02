@@ -30,7 +30,7 @@ const PopupForm: React.FC<Props> = ({ onClose }) => {
         validateForm: validateEnquiryFormWithToast,
         onSubmit: createAppoinmentRequest,
         captchaAction: "popup_form",
-        namePrefix: "(brochure) ",
+        namePrefix: "(From Landing Page Brochure) ",
     });
 
     useEffect(() => {
