@@ -12,9 +12,9 @@ import Table from "./components/Table";
 const HomePage = () => {
   return (
     <div>
-      <CaptchaWrapper>
-        <Banner />
-      </CaptchaWrapper>
+      {/* <CaptchaWrapper> */}
+      <Banner />
+      {/* </CaptchaWrapper> */}
       <PlacementStats />
       <Partners />
       <Table />
