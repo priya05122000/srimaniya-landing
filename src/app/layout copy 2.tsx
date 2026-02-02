@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { IoClose } from "react-icons/io5";
 import { toast } from "react-toastify";
 
-import PopupEnquiryForm from "@/components/PopupEnquiryForm";
+// import PopupEnquiryForm from "@/components/PopupEnquiryForm";
 
 export default function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props;
@@ -95,7 +95,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
                     </div>
 
                     {/* PopupEnquiryForm handles its own logic and closes on success */}
-                    <PopupEnquiryForm onSuccess={() => setShowPopup(false)} fieldsToShow={["name", "mobile"]} />
+                    {/* <PopupEnquiryForm onSuccess={() => setShowPopup(false)} fieldsToShow={["name", "mobile"]} /> */}
                   </motion.div>
                 </motion.div>
               )}
