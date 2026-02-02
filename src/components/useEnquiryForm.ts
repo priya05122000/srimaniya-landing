@@ -32,10 +32,12 @@ export function useEnquiryForm({
     validateForm,
     onSubmit,
     captchaAction = "enquiry_form",
+    namePrefix = "",
 }: {
     validateForm?: (formData: EnquiryFormData) => boolean;
     onSubmit: (payload: any) => Promise<void>;
     captchaAction?: string;
+    namePrefix?: string;
 }) {
     const [formData, setFormData] = useState<EnquiryFormData>(getInitialFormData());
     const [loading, setLoading] = useState(false);
@@ -93,9 +95,8 @@ export function useEnquiryForm({
             const captchaToken = await executeRecaptcha(captchaAction);
             console.log("Captcha token:", captchaToken);
 
-
             const payload = {
-                name: tempFormData.name,
+                name: namePrefix ? `${namePrefix}${tempFormData.name}` : tempFormData.name,
                 email: tempFormData.email?.trim() || null,
                 phone_number: tempFormData.mobile ? `${localStorage.getItem("countryCode")}${tempFormData.mobile}` : null,
                 message: tempFormData.message || null,
@@ -104,7 +105,6 @@ export function useEnquiryForm({
             };
             await onSubmit(payload);
             setFormData(getInitialFormData());
-            // Show a specific message for international patients route only
             setSuccess('Submitted successfully!');
         } catch (err) {
             setError(err instanceof Error ? err.message : "Failed to submit enquiry.");
