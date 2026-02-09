@@ -12,6 +12,14 @@ const nextConfig: NextConfig = {
       "localhost",
       "127.0.0.1",
     ],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "api.srimaniyainstitute.in",
+        pathname: "/uploads/**",
+      },
+    ],
+    unoptimized: true,
   },
 };
 

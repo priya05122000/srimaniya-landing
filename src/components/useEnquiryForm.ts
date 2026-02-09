@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 // -------------------- Types & Initial State --------------------
@@ -44,7 +45,7 @@ export function useEnquiryForm({
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState<string | null>(null);
     const { executeRecaptcha } = useGoogleReCaptcha();
-    
+    const router = useRouter();
 
     // Unified handleChange
     const handleChange = (
@@ -93,7 +94,6 @@ export function useEnquiryForm({
 
         try {
             const captchaToken = await executeRecaptcha(captchaAction);
-            console.log("Captcha token:", captchaToken);
 
             const payload = {
                 name: namePrefix ? `${namePrefix}${tempFormData.name}` : tempFormData.name,
@@ -106,6 +106,7 @@ export function useEnquiryForm({
             await onSubmit(payload);
             setFormData(getInitialFormData());
             setSuccess('Submitted successfully!');
+            router.push("/thankyou");
         } catch (err) {
             setError(err instanceof Error ? err.message : "Failed to submit enquiry.");
         } finally {

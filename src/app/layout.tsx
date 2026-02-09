@@ -7,8 +7,13 @@ import Loader from "@/components/Loader";
 import "./globals.css";
 import PopupForm from "@/components/PopupForm";
 import CaptchaWrapper from "@/components/CaptchaWrapper";
+import Script from "next/script";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [loading, setLoading] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
 
@@ -28,6 +33,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17861303334"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'AW-17861303334');
+            `}
+        </Script>
+      </head>
       <body className="antialiased">
         <LoadingContext.Provider value={{ loading, setLoading }}>
           <CaptchaWrapper>
@@ -45,7 +65,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
 
             {/* App */}
-            <div className={`fade-transition ${loading ? "fade-hidden" : "fade-visible"}`}>
+            <div
+              className={`fade-transition ${loading ? "fade-hidden" : "fade-visible"}`}
+            >
               <ClientLayout>{children}</ClientLayout>
               {/* Popup */}
               {showPopup && <PopupForm onClose={() => setShowPopup(false)} />}
