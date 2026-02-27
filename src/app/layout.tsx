@@ -8,6 +8,7 @@ import "./globals.css";
 import PopupForm from "@/components/PopupForm";
 import CaptchaWrapper from "@/components/CaptchaWrapper";
 import Script from "next/script";
+import { usePathname } from "next/navigation";
 
 export default function RootLayout({
   children,
@@ -16,6 +17,7 @@ export default function RootLayout({
 }) {
   const [loading, setLoading] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
+  const pathname = usePathname();
 
   // Show loader for 5 seconds
   useEffect(() => {
@@ -23,9 +25,21 @@ export default function RootLayout({
     return () => clearTimeout(timer);
   }, []);
 
+
+  useEffect(() => {
+    if (pathname === "/thankyou") {
+      localStorage.setItem("popupDisabled", "true");
+    }
+  }, [pathname])
+
   // Show popup 5 seconds after loader disappears
   useEffect(() => {
     if (!loading) {
+
+      const isDisabled = localStorage.getItem("popupDisabled");
+
+      if(isDisabled==="true") return;
+
       const popupTimer = setTimeout(() => setShowPopup(true), 5000);
       return () => clearTimeout(popupTimer);
     }
@@ -35,9 +49,9 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="robots" content="noindex, nofollow"></meta>
-          {/* Google Tag Manager */}
-          <Script id="gtm-script" strategy="afterInteractive">
-            {`
+        {/* Google Tag Manager */}
+        <Script id="gtm-script" strategy="afterInteractive">
+          {`
               (function(w,d,s,l,i){
                 w[l]=w[l]||[];
                 w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
@@ -49,7 +63,7 @@ export default function RootLayout({
                 f.parentNode.insertBefore(j,f);
               })(window,document,'script','dataLayer','GTM-TLLR36TQ');
             `}
-          </Script>
+        </Script>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17861303334"
           strategy="afterInteractive"
