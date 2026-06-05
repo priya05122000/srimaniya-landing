@@ -383,7 +383,3 @@ option {
   object-fit: contain;
   padding: 0 8px;
 }
-
-.grecaptcha-badge {
-  visibility: hidden;
-}

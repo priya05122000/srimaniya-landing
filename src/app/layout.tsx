@@ -6,7 +6,6 @@ import ClientLayout from "./ClientLayout";
 import Loader from "@/components/Loader";
 import "./globals.css";
 import PopupForm from "@/components/PopupForm";
-import CaptchaWrapper from "@/components/CaptchaWrapper";
 import Script from "next/script";
 
 export default function RootLayout({
@@ -113,7 +112,6 @@ export default function RootLayout({
           ></iframe>
         </noscript>
         <LoadingContext.Provider value={{ loading, setLoading }}>
-          <CaptchaWrapper>
             {/* Loader */}
             <div
               className={`fade-transition ${loading ? "fade-visible" : "fade-hidden"}`}
@@ -135,7 +133,6 @@ export default function RootLayout({
               {/* Popup */}
               {showPopup && <PopupForm onClose={() => setShowPopup(false)} />}
             </div>
-          </CaptchaWrapper>
         </LoadingContext.Provider>
       </body>
     </html>

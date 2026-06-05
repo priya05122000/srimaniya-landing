@@ -29,7 +29,6 @@ const PopupForm: React.FC<Props> = ({ onClose }) => {
     } = useEnquiryForm({
         validateForm: validateEnquiryFormWithToast,
         onSubmit: createAppoinmentRequest,
-        captchaAction: "popup_form",
         namePrefix: "(From Landing Page Brochure) ",
     });
 

@@ -24,7 +24,6 @@ const Banner: React.FC = () => {
   const { formData, handleChange, handleSubmit, loading, error, success, setError, setSuccess } = useEnquiryForm({
     validateForm: validateEnquiryFormWithToast,
     onSubmit: createAppoinmentRequest,
-    captchaAction: "enquiry_form",
   });
 
   useEffect(() => {

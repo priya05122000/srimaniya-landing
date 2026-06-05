@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 // -------------------- Types & Initial State --------------------
 export type EnquiryFormData = {
@@ -32,19 +31,16 @@ const sanitizers: Record<string, (value: string) => string> = {
 export function useEnquiryForm({
     validateForm,
     onSubmit,
-    captchaAction = "enquiry_form",
     namePrefix = "",
 }: {
     validateForm?: (formData: EnquiryFormData) => boolean;
     onSubmit: (payload: any) => Promise<void>;
-    captchaAction?: string;
     namePrefix?: string;
 }) {
     const [formData, setFormData] = useState<EnquiryFormData>(getInitialFormData());
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [success, setSuccess] = useState<string | null>(null);
-    const { executeRecaptcha } = useGoogleReCaptcha();
     const router = useRouter();
 
     // Unified handleChange
@@ -85,23 +81,15 @@ export function useEnquiryForm({
         const tempFormData = { ...formData };
         if (validateForm && !validateForm(tempFormData)) return;
 
-        if (!executeRecaptcha) {
-            setError("Captcha failed. Please refresh and try again.");
-            return;
-        }
-
         setLoading(true);
 
         try {
-            const captchaToken = await executeRecaptcha(captchaAction);
-
             const payload = {
                 name: namePrefix ? `${namePrefix}${tempFormData.name}` : tempFormData.name,
                 email: tempFormData.email?.trim() || null,
                 phone_number: tempFormData.mobile ? `${localStorage.getItem("countryCode")}${tempFormData.mobile}` : null,
                 message: tempFormData.message || null,
                 course_id: tempFormData.course || null,
-                token: captchaToken,
             };
             await onSubmit(payload);
             setFormData(getInitialFormData());
